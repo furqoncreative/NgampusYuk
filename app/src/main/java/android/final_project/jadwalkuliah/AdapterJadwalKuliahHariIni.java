@@ -70,35 +70,6 @@ public class AdapterJadwalKuliahHariIni extends RecyclerView.Adapter<AdapterJadw
             }
         });
 
-        holder.layout.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-                builder.setTitle("Hapus Jadwal");
-                builder.setMessage("Apakah anda bermaksud menghapus jadwal ini?");
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        JadwalKuliahHelper myDB = new JadwalKuliahHelper(mContext);
-                        myDB.deleteData(current.getmId());
-
-                        mListJadwal.remove(position);
-                        mRecyclerV.removeViewAt(position);
-                        notifyItemRemoved(position);
-                        notifyItemRangeChanged(position, mListJadwal.size());
-                        notifyDataSetChanged();
-                    }
-                });
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-                builder.create().show();
-                return false;
-            }
-        });
 
 
     }
